@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 import connectDB from './config/db.js';
 import cors from 'cors'
-import products from '../backend/data/products.js'
+
+import productRoutes from './routes/productRoutes.js'
 // const express = require(express)
 const port = process.env.PORT || 5000;
 
@@ -18,14 +19,19 @@ app.get('/', (req,res) => {
 
 })
 
-app.get('/api/products', (req, res) => {
-    res.json(products)
-})
+app.use('/api/products', productRoutes);
 
-app.get('/api/products/:id', (req, res) => {
-    const product = products.find((product)=>product._id === req.params.id);
-    res.json(product)
-})
+// app.get('/api/products', (req, res) => {
+//     res.json(products)
+// })
+
+// app.get('/api/products/:id', (req, res) => {
+//     const product = products.find((product) => product._id === req.params.id);
+//     console.log(product)
+//     res.json(product)
+// })
+
+
 
 app.listen(port, () => {
     console.log(`server is running on port ${port}`)
