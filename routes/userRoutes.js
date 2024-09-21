@@ -5,7 +5,7 @@ import { authUser,registerUser,logoutUser,getUserProfile,updateUserProfile,getUs
 
 
 router.route('/').post(registerUser).get(getUsers)
-router.post('/auth',authUser)
+router.post('/login',authUser)
 router.post('/logout',logoutUser)
 router.route('/profile').put(updateUserProfile).get(getUserProfile)
 router.route('/:id').delete(deleteUser).get(getUserById).put(updateUser)
